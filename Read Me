@@ -1,0 +1,31 @@
+This GitHub repository contains a script for automating network interface monitoring and configuration on Cisco devices using Tcl scripting within the Embedded Event Manager (EEM) environment.
+
+Features
+Interface Status Monitoring: The script checks the status of a specified network interface and logs events.
+Automatic Speed and Duplex Configuration: If the interface speed or duplex settings are not set to auto, the script can automatically reconfigure them.
+Phone Detection via LLDP: Detects phones connected to the interface using LLDP and ensures proper interface settings.
+Clear Interface Counters: Clears counters on the interface based on its status (up, down, or administratively down).
+Shutdown Unused Interfaces: Automatically shuts down interfaces that haven't been used in a specified amount of time.
+Script Overview
+The script takes an interface name as an argument and performs the following steps:
+
+Trigger Log: Logs an EEM trigger event.
+Interface Status Check:
+If the interface is up, it checks for connected phones using LLDP.
+If no phone is detected, it ensures that the speed and duplex settings are set to auto.
+If the interface is down, it checks the last input time and shuts down the interface if it hasn't been used in a long time.
+If the interface is administratively down, it logs the event.
+Clearing Counters: Clears interface counters after processing.
+Prerequisites
+Cisco device with Embedded Event Manager (EEM) enabled.
+Access to the Cisco CLI for script deployment.
+Basic knowledge of Tcl scripting.
+
+Usage
+Clone the repository to your local machine:
+
+git clone https://github.com/yourusername/network-automation.git
+cd network-automation
+Modify the script as necessary to fit your environment.
+Deploy the script on a Cisco device with EEM enabled.
+Trigger the script by specifying the interface to be monitored.
